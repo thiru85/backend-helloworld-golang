@@ -19,10 +19,18 @@ func headers(w http.ResponseWriter, req *http.Request) {
     }
 }
 
+func thiru(w http.ResponseWriter, req *http.Request) {
+
+    fmt.Fprintf(w, "thiru:%v\n", req.Header)
+}
+
+
+
 func main() {
 
     http.HandleFunc("/hello", hello)
-    http.HandleFunc("/headers", headers)
+	http.HandleFunc("/headers", headers)
+	http.HandleFunc("/thiru", thiru)
 
     http.ListenAndServe(":8080", nil)
 }
