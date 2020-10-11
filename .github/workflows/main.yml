@@ -5,7 +5,7 @@ on: [push, delete]
 jobs:
 
     to_codecommit:                                        # <-- different jobs are executed in parallel.
-    runs-on: ubuntu-18.04
+    - runs-on: ubuntu-18.04
     steps:
     - uses: actions/checkout@v1
     - uses: pixta-dev/repository-mirroring-action@v1
