@@ -9,3 +9,4 @@ USER appuser
 COPY --from=builder /build/main /app/
 WORKDIR /app
 CMD ["./main"]
+EXPOSE 8080/tcp
