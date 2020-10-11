@@ -10,9 +10,6 @@ jobs:
         - uses: actions/checkout@v1
         - uses: pixta-dev/repository-mirroring-action@v1
           with:
-            target_repo_url:
-            ssh://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/backend-helloworld-golang
-            ssh_private_key:
-            ${{ secrets.CODECOMMIT_PRIVKEY }}
-            ssh_username:                                   # <-- (for codecommit) you need to specify ssh-key-id as ssh username.
-            ${{ secrets.CODECOMMIT_PRIVACCESSID }}
+            - target_repo_url: ssh://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/backend-helloworld-golang
+            - ssh_private_key: ${{ secrets.CODECOMMIT_PRIVKEY }}
+            - ssh_username: ${{ secrets.CODECOMMIT_PRIVACCESSID }}
