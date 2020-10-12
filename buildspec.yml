@@ -6,8 +6,7 @@ phases:
       golang: latest
     commands:
       - echo Installing app dependencies...
-      - echo Run "go get"...
-      - go get
+      - echo Run "nothing is being run"...
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 7) 
   pre_build:
     commands:
