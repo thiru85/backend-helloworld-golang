@@ -11,7 +11,7 @@ import (
 	"fmt"
 )
 
-func main() {
+func pullSecret() {
 	secretName := "taiyalu-powershell"
 	region := "ap-southeast-1"
 
