@@ -24,11 +24,18 @@ func thiru(w http.ResponseWriter, req *http.Request) {
     fmt.Fprintf(w, "%v", req.Header)
 }
 
+func helloworld(w http.ResponseWriter, req *http.Request) {
+
+    fmt.Fprintln(w, "HELLO OCTANK!")
+    fmt.Fprintln(w, "THIS MEANS IT WORKED")
+}
+
 func main() {
 
     http.HandleFunc("/hello", hello)
 	http.HandleFunc("/headers", headers)
     http.HandleFunc("/thiru", thiru)
+    http.HandleFunc("/helloworld", helloworld)
 
     http.ListenAndServe(":8080", nil)
 }
