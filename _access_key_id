@@ -1,0 +1,94 @@
+GET()                                                                    GET()
+
+
+
+NNAAMMEE
+       get -
+
+DDEESSCCRRIIPPTTIIOONN
+       Get a configuration value from the config file.
+
+       The  aawwss  ccoonnffiigguurree  ggeett  command  can be used to print a configuration
+       value in the AWS config file.  The ggeett command supports  two  types  of
+       configuration values, _u_n_q_u_a_l_i_f_i_e_d and _q_u_a_l_i_f_i_e_d config values.
+
+       Note  that aawwss ccoonnffiigguurree ggeett only looks at values in the AWS configura-
+       tion file.  It does nnoott resolve configuration variables specified  any-
+       where  else,  including  environment variables, command line arguments,
+       etc.
+
+   UUnnqquuaalliiffiieedd NNaammeess
+       Every value in the AWS configuration file must be placed in  a  section
+       (denoted  by  [[sseeccttiioonn--nnaammee]]  in the config file).  To retrieve a value
+       from the config file, the section name and  the  config  name  must  be
+       known.
+
+       An  unqualified  configuration name refers to a name that is not scoped
+       to a specific section in the configuration file.  Sections  are  speci-
+       fied  by separating parts with the "".."" character (sseeccttiioonn..ccoonnffiigg--nnaammee).
+       An unqualified name will be scoped to the current profile.   For  exam-
+       ple,   aawwss   ccoonnffiigguurree   ggeett   aawwss__aacccceessss__kkeeyy__iidd   will   retrieve  the
+       aawwss__aacccceessss__kkeeyy__iidd from the current profile,  or the ddeeffaauulltt profile  if
+       no profile is specified.  You can still provide a ----pprrooffiillee argument to
+       the aawwss ccoonnffiigguurree ggeett command.  For example, aawwss ccoonnffiigguurree  ggeett  rreeggiioonn
+       ----pprrooffiillee tteessttiinngg will print the region value for the tteessttiinngg profile.
+
+   QQuuaalliiffiieedd NNaammeess
+       A  qualified  name is a name that has at least one "".."" character in the
+       name.  This name provides a way to  specify  the  config  section  from
+       which  to  retrieve the config variable.  When a qualified name is pro-
+       vided to aawwss ccoonnffiigguurree ggeett, the currently specified profile is ignored.
+       Section names that have the format [[pprrooffiillee pprrooffiillee--nnaammee]] can be speci-
+       fied by using  the  pprrooffiillee..pprrooffiillee--nnaammee..ccoonnffiigg--nnaammee  syntax,  and  the
+       default profile can be specified using the ddeeffaauulltt..ccoonnffiigg--nnaammee syntax.
+
+       See 'aws help' for descriptions of global parameters.
+
+SSYYNNOOPPSSIISS
+          aws configure get varname [--profile profile-name]
+
+OOPPTTIIOONNSS
+       vvaarrnnaammee (string) The name of the config value to retrieve.
+
+       See 'aws help' for descriptions of global parameters.
+
+EEXXAAMMPPLLEESS
+       Suppose you had the following config file:
+
+          [default]
+          aws_access_key_id=default_access_key
+          aws_secret_access_key=default_secret_key
+
+          [preview]
+          cloudsearch=true
+
+          [profile testing]
+          aws_access_key_id=testing_access_key
+          aws_secret_access_key=testing_secret_key
+          region=us-west-2
+
+       The following commands would have the corresponding output:
+
+          $ aws configure get aws_access_key_id
+          default_access_key
+
+          $ aws configure get default.aws_access_key_id
+          default_access_key
+
+          $ aws configure get aws_access_key_id --profile testing
+          testing_access_key
+
+          $ aws configure get profile.testing.aws_access_key_id
+          testing_access_key
+
+          $ aws configure get preview.cloudsearch
+          true
+
+          $ aws configure get preview.does-not-exist
+          $
+          $ echo $?
+          1
+
+
+
+                                                                         GET()
