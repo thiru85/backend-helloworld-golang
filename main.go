@@ -21,7 +21,7 @@ func headers(w http.ResponseWriter, req *http.Request) {
 
 func thiru(w http.ResponseWriter, req *http.Request) {
 
-    fmt.Fprintf(w, "thiru:%v\n", req.Header)
+    fmt.Fprintf(w, req.Header)
 }
 
 
