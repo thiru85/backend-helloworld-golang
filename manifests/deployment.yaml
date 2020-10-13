@@ -21,9 +21,23 @@ spec:
         app: backend-helloworld-golang
     spec:
       containers:
-      - image: 081324788528.dkr.ecr.ap-southeast-1.amazonaws.com/taiyalu:latest
-        imagePullPolicy: Always
-        name: backend-helloworld-golang
-        ports:
-        - containerPort: 8080
-          protocol: TCP
+        - image: '081324788528.dkr.ecr.ap-southeast-1.amazonaws.com/taiyalu:latest'
+          imagePullPolicy: Always
+          name: backend-helloworld-golang
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: backend-helloworld-golang-hpa
+  namespace: default
+spec:
+  maxReplicas: 10
+  minReplicas: 3
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: backend-helloworld-golang
+  targetCPUUtilizationPercentage: 20
