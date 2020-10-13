@@ -1,4 +1,3 @@
 # backend-helloworld-golang
-My API microservice to return "hello world" when called
-# commit from c9
-# commit from VSCode
+## This is a small golang code that is intended to be deployed into a container and onto k8s
+### Contains Dockerfile, deployment manifests for Kubernetes as well as Buildspecs for AWS CodeBuild
