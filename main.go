@@ -10,6 +10,7 @@ import (
 	"log"
 	"net/http"
 	"regexp"
+	"fmt"
 )
 
 type Page struct {
@@ -80,10 +81,16 @@ func saveHandler(w http.ResponseWriter, r *http.Request, title string) {
 	http.Redirect(w, r, "/view/"+title, http.StatusFound)
 }
 
+func thiru(w http.ResponseWriter, req *http.Request) {
+
+    fmt.Fprintf(w, "hello\n")
+}
+
 func main() {
 	http.HandleFunc("/view/", makeHandler(viewHandler))
 	http.HandleFunc("/edit/", makeHandler(editHandler))
 	http.HandleFunc("/save/", makeHandler(saveHandler))
+	http.HandleFunc("/thiru", thiru)
 
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
