@@ -21,7 +21,7 @@ var templates = template.Must(template.ParseFiles("edit.html", "view.html"))
 var validPath = regexp.MustCompile("^/(edit|save|view)/([a-zA-Z0-9]+)$")
 
 func (p *Page) save() error {
-	filename := p.Title + ".txt"
+	filename := p.Title + ".html"
 	return ioutil.WriteFile(filename, p.Body, 0600)
 }
 
