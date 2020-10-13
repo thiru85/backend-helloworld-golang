@@ -83,7 +83,7 @@ func saveHandler(w http.ResponseWriter, r *http.Request, title string) {
 
 func thiru(w http.ResponseWriter, req *http.Request) {
 
-    fmt.Fprintf(w, "hello\n")
+    fmt.Fprintf(w, "hello Octank\n")
 }
 
 func main() {
