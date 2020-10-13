@@ -28,7 +28,7 @@ spec:
             - containerPort: 8080
               protocol: TCP
 ---
-apiVersion: autoscaling/v2beta2
+apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: backend-helloworld-golang-hpa
@@ -40,10 +40,4 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: backend-helloworld-golang
-  metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 1
+  targetCPUUtilizationPercentage: 1
