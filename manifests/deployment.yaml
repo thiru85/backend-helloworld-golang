@@ -37,7 +37,13 @@ spec:
   maxReplicas: 10
   minReplicas: 3
   scaleTargetRef:
-    apiVersion: extensions/v1beta1
+    apiVersion: apps/v1
     kind: Deployment
     name: backend-helloworld-golang
-  targetCPUUtilizationPercentage: 20
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 5
